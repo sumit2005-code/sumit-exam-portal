@@ -33,15 +33,18 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-async function start() {
-  await connectDB();
+// Connect DB then start server
+connectDB().then(() => {
   app.listen(PORT, () => {
     console.log(`MCQ Test Platform running at http://localhost:${PORT}`);
     console.log(`Admin panel: http://localhost:${PORT}/admin/login.html`);
   });
-}
-
-start().catch((err) => {
-  console.error('Failed to start server:', err);
-  process.exit(1);
+}).catch((err) => {
+  console.error('DB connection failed, starting without DB:', err.message);
+  // Still start the server even if DB fails
+  app.listen(PORT, () => {
+    console.log(`Server running without DB at http://localhost:${PORT}`);
+  });
 });
+
+module.exports = app;
