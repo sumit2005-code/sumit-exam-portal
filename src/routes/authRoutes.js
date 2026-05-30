@@ -18,29 +18,22 @@ router.post('/login', async (req, res) => {
       return res.status(400).json({ error: 'Username and password are required' });
     }
 
-    const cleanUsername = username.trim();
-    const cleanPassword = password.trim();
-
     if (
-      cleanUsername !== process.env.ADMIN_USERNAME ||
-      cleanPassword !== process.env.ADMIN_PASSWORD
+      username.trim() !== process.env.ADMIN_USERNAME ||
+      password.trim() !== process.env.ADMIN_PASSWORD
     ) {
       return res.status(401).json({ error: 'Invalid credentials' });
     }
 
     const token = jwt.sign(
-      { username: cleanUsername, role: 'admin' },
+      { username: username.trim(), role: 'admin' },
       process.env.JWT_SECRET,
       { expiresIn: '24h' }
     );
 
     res.cookie('adminToken', token, COOKIE_OPTS);
+    res.json({ message: 'Login successful', username: username.trim(), token });
 
-    res.json({
-      message: 'Login successful',
-      username: cleanUsername,
-      token,
-    });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -52,10 +45,7 @@ router.post('/logout', (req, res) => {
 });
 
 router.get('/me', authMiddleware, (req, res) => {
-  res.json({
-    username: req.admin.username,
-    role: req.admin.role || 'admin',
-  });
+  res.json({ username: req.admin.username, role: req.admin.role || 'admin' });
 });
 
 module.exports = router;
