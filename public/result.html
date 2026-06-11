@@ -3,24 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Test Result</title>
+  <title>Your Result — MCQ Platform</title>
   <link rel="stylesheet" href="/css/style.css">
+  <style>
+    body { display: flex; flex-direction: column; min-height: 100vh; justify-content: center; align-items: center; padding: 2rem; }
+    .result-actions { display:flex; gap:0.75rem; justify-content:center; margin-top:1.5rem; flex-wrap:wrap; }
+  </style>
 </head>
 <body>
-  <header class="site-header">
-    <div class="container">
-      <h1>Your Result</h1>
+  <div style="width:100%;max-width:560px;">
+    <div style="text-align:center;margin-bottom:1.5rem;">
+      <span style="font-family:var(--mono);font-size:0.7rem;color:var(--accent);letter-spacing:0.2em;text-transform:uppercase;">Test Complete</span>
     </div>
-  </header>
-  <main class="container">
     <div id="resultCard" class="result-card">
-      <p>Loading result...</p>
+      <p style="color:var(--text2);">Loading result…</p>
     </div>
-    <p style="text-align:center;">
+    <div class="result-actions">
       <a href="/tests.html" class="btn btn-primary">Take Another Test</a>
-      <a href="/" class="btn btn-secondary" style="margin-left:0.5rem;">Home</a>
-    </p>
-  </main>
+      <a href="/" class="btn btn-secondary">← Home</a>
+    </div>
+  </div>
   <script src="/js/api.js"></script>
   <script src="/js/result.js"></script>
 </body>

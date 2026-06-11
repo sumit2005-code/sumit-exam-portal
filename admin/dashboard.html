@@ -3,64 +3,83 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard - Admin</title>
+  <title>Dashboard — Admin</title>
   <link rel="stylesheet" href="/css/admin.css">
 </head>
 <body>
   <div class="admin-layout">
     <aside class="admin-sidebar">
-      <h2>Admin Panel</h2>
-      <nav>
-        <a href="/admin/dashboard.html" class="active">Dashboard</a>
-        <a href="/admin/subjects.html">Subjects</a>
-        <a href="/admin/tests.html">Tests</a>
-        <a href="/admin/questions.html">Questions</a>
-        <a href="/admin/import.html">Excel Import</a>
-        <a href="/admin/results.html">Results</a>
-        <a href="/">Student Site</a>
+      <div class="sidebar-logo">
+        <div class="logo-mark">Admin Portal</div>
+        <h2>MCQ Platform</h2>
+      </div>
+      <nav class="sidebar-nav">
+        <span class="nav-section">Main</span>
+        <a href="/admin/dashboard.html" class="active"><span class="nav-icon">◈</span> Dashboard</a>
+        <span class="nav-section">Content</span>
+        <a href="/admin/subjects.html"><span class="nav-icon">◉</span> Subjects</a>
+        <a href="/admin/tests.html"><span class="nav-icon">◎</span> Tests</a>
+        <a href="/admin/questions.html"><span class="nav-icon">◇</span> Questions</a>
+        <a href="/admin/import.html"><span class="nav-icon">⊞</span> Excel Import</a>
+        <span class="nav-section">Reports</span>
+        <a href="/admin/results.html"><span class="nav-icon">◑</span> Results</a>
       </nav>
+      <div class="sidebar-footer">
+        <a href="/">← Student Site</a>
+      </div>
     </aside>
     <main class="admin-main">
       <div class="admin-topbar">
-        <h1>Dashboard</h1>
-        <div>
-          <span id="adminUser"></span>
+        <div class="topbar-left">
+          <span class="topbar-label">Overview</span>
+          <h1>Dashboard</h1>
+        </div>
+        <div class="topbar-right">
+          <span class="admin-user-badge" id="adminUser"></span>
           <button class="btn btn-secondary btn-sm" id="logoutBtn">Logout</button>
         </div>
       </div>
-      <div id="statsGrid" class="stats-grid"></div>
-      <h2 style="margin-bottom:0.75rem;">Test-wise Performance</h2>
-      <div style="overflow-x:auto;margin-bottom:2rem;">
-        <table class="data-table" id="testStatsTable">
-          <thead>
-            <tr>
-              <th>Test</th>
-              <th>Attempts</th>
-              <th>Avg Score</th>
-              <th>Avg %</th>
-              <th>Highest</th>
-              <th>Lowest</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
-      </div>
-      <h2 style="margin-bottom:0.75rem;">Recent Attempts</h2>
-      <div style="overflow-x:auto;">
-        <table class="data-table" id="recentTable">
-          <thead>
-            <tr>
-              <th>Student</th>
-              <th>Mobile</th>
-              <th>Subject</th>
-              <th>Test</th>
-              <th>Score</th>
-              <th>%</th>
-              <th>Submitted</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
+      <div class="admin-body">
+        <div id="statsGrid" class="stats-grid"></div>
+
+        <div class="section-header">
+          <h2>Test-wise Performance</h2>
+        </div>
+        <div class="table-wrap">
+          <table class="data-table" id="testStatsTable">
+            <thead>
+              <tr>
+                <th>Test</th>
+                <th>Attempts</th>
+                <th>Avg Score</th>
+                <th>Avg %</th>
+                <th>Highest</th>
+                <th>Lowest</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+
+        <div class="section-header" style="margin-top:1rem;">
+          <h2>Recent Attempts</h2>
+        </div>
+        <div class="table-wrap">
+          <table class="data-table" id="recentTable">
+            <thead>
+              <tr>
+                <th>Student</th>
+                <th>Mobile</th>
+                <th>Subject</th>
+                <th>Test</th>
+                <th>Score</th>
+                <th>%</th>
+                <th>Submitted</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
       </div>
     </main>
   </div>
